@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FLAME PULSE | Streetwear</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #050507;
+      --primary: #f5f52e;
+      --secondary: #ffffff;
+      --muted: #1c1c1f;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--secondary);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1200px, 94%);
+      margin: 0 auto;
+    }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(5, 5, 7, 0.9);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(245, 245, 46, 0.15);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+    }
+
+    .logo {
+      font-family: 'Bebas Neue', 'Impact', sans-serif;
+      font-size: 30px;
+      letter-spacing: 1px;
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      position: relative;
+      font-weight: 600;
+      letter-spacing: 0.4px;
+      padding-bottom: 4px;
+      transition: color 0.25s ease;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--primary);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      font-size: 18px;
+    }
+
+    .icon-btn {
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .icon-btn:hover {
+      transform: translateY(-2px) scale(1.03);
+      border-color: rgba(245, 245, 46, 0.5);
+      background: rgba(245, 245, 46, 0.08);
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 90vh;
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      align-items: center;
+      padding: 60px 0 80px;
+      gap: 40px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 20%, rgba(245, 245, 46, 0.08), transparent 40%),
+        radial-gradient(circle at 80% 40%, rgba(255, 255, 255, 0.05), transparent 40%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(5, 5, 7, 0.8));
+      z-index: 1;
+      mix-blend-mode: screen;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1400&q=80');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.16;
+      z-index: 0;
+      filter: grayscale(100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      animation: fadeUp 1s ease 0.1s both;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 38px;
+      height: 2px;
+      background: var(--primary);
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', 'Impact', sans-serif;
+      font-size: clamp(48px, 7vw, 86px);
+      letter-spacing: 1px;
+      line-height: 1;
+    }
+
+    .hero p {
+      max-width: 560px;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 17px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .btn {
+      padding: 14px 20px;
+      border-radius: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #080808;
+      box-shadow: 0 10px 30px rgba(245, 245, 46, 0.25);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: var(--secondary);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: 0 14px 32px rgba(245, 245, 46, 0.3);
+    }
+
+    /* SPOILER CARDS DE COLEÇÕES - LATERAL */
+    .hero-carousel {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      gap: 16px;
+      padding: 18px;
+      background: linear-gradient(180deg, rgba(28, 28, 31, 0.9), rgba(5, 5, 7, 0.8));
+      border: 1px solid rgba(245, 245, 46, 0.2);
+      border-radius: 18px;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .carousel-title {
+      font-weight: 700;
+      letter-spacing: 1px;
+      font-size: 14px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .spoiler-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .spoiler-card {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      min-height: 140px;
+      isolation: isolate;
+      background: #0c0c0f;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .spoiler-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(245, 245, 46, 0.4);
+    }
+
+    .spoiler-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(55%);
+      transition: filter 0.3s ease;
+      z-index: -1;
+    }
+
+    .spoiler-card:hover img {
+      filter: brightness(80%);
+    }
+
+    .spoiler-content {
+      position: relative;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      height: 100%;
+      justify-content: space-between;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 40px;
+      background: rgba(245, 245, 46, 0.1);
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      width: fit-content;
+    }
+
+    .spoiler-title {
+      font-family: 'Bebas Neue', 'Impact', sans-serif;
+      font-size: 24px;
+      letter-spacing: 0.5px;
+    }
+
+    .spoiler-overlay {
+      position: absolute;
+      inset: 0;
+      padding: 16px;
+      display: grid;
+      align-items: flex-end;
+      background: linear-gradient(180deg, rgba(5, 5, 7, 0) 0%, rgba(5, 5, 7, 0.8) 100%);
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+
+    .spoiler-card:hover .spoiler-overlay {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .spoiler-overlay p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 12px;
+    }
+
+    .spoiler-overlay .btn-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      color: var(--primary);
+      transition: gap 0.25s ease;
+    }
+
+    .spoiler-overlay .btn-inline:hover {
+      gap: 12px;
+    }
+
+    /* SPOILER GRID */
+    .spoiler-grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      margin: 32px 0 0;
+    }
+
+    /* SEÇÃO DESTAQUES DE COLEÇÕES */
+    section {
+      position: relative;
+      padding: 80px 0;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', 'Impact', sans-serif;
+      font-size: 34px;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 26px;
+    }
+
+    .section-title::before {
+      content: '';
+      width: 36px;
+      height: 3px;
+      background: var(--primary);
+    }
+
+    .collections-grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .collection-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 18px;
+      min-height: 260px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #0c0c0f;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .collection-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.45s ease, transform 0.45s ease, border-color 0.3s ease;
+    }
+
+    .collection-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(65%);
+      transition: filter 0.3s ease;
+    }
+
+    .collection-card:hover img {
+      filter: brightness(85%);
+    }
+
+    .collection-content {
+      position: relative;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 10px;
+      background: linear-gradient(180deg, rgba(5, 5, 7, 0) 0%, rgba(5, 5, 7, 0.8) 100%);
+      height: 100%;
+    }
+
+    .collection-name {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+    }
+
+    /* PRODUTOS EM DESTAQUE */
+    .products-row {
+      display: grid;
+      gap: 16px;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(210px, 1fr);
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scroll-snap-type: x mandatory;
+    }
+
+    .product-card {
+      background: #0c0c0f;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+      scroll-snap-align: start;
+      opacity: 0;
+      transform: translateY(28px);
+    }
+
+    .product-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.45s ease, transform 0.45s ease, border-color 0.25s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(245, 245, 46, 0.35);
+    }
+
+    .product-image {
+      position: relative;
+      height: 240px;
+      overflow: hidden;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease, filter 0.35s ease;
+    }
+
+    .product-card:hover img {
+      transform: scale(1.05);
+      filter: brightness(85%);
+    }
+
+    .product-body {
+      padding: 16px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .product-name {
+      font-weight: 700;
+      letter-spacing: 0.4px;
+    }
+
+    .price {
+      color: var(--primary);
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      padding: 6px 10px;
+      border-radius: 40px;
+      background: rgba(245, 245, 46, 0.14);
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .add-to-cart {
+      margin-top: 8px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(28, 28, 31, 0.7);
+      font-weight: 700;
+      transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+    }
+
+    .product-card:hover .add-to-cart {
+      background: var(--primary);
+      color: #080808;
+      border-color: transparent;
+      transform: translateY(-2px);
+    }
+
+    /* STORY SECTION */
+    .story {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .story-visual {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      height: 360px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .story-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(5, 5, 7, 0) 0%, rgba(5, 5, 7, 0.85) 100%);
+    }
+
+    .story-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(80%);
+    }
+
+    .story-text {
+      display: grid;
+      gap: 14px;
+    }
+
+    .story-text h3 {
+      font-family: 'Bebas Neue', 'Impact', sans-serif;
+      font-size: 30px;
+      letter-spacing: 0.8px;
+    }
+
+    .story-text p {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    /* NEWSLETTER */
+    .newsletter {
+      background: linear-gradient(90deg, rgba(245, 245, 46, 0.1), rgba(5, 5, 7, 0.9));
+      border: 1px solid rgba(245, 245, 46, 0.3);
+      border-radius: 18px;
+      padding: 32px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .newsletter h4 {
+      font-family: 'Bebas Neue', 'Impact', sans-serif;
+      font-size: 26px;
+      letter-spacing: 0.6px;
+      color: var(--primary);
+    }
+
+    .newsletter form {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .newsletter input {
+      flex: 1 1 260px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(5, 5, 7, 0.8);
+      color: var(--secondary);
+    }
+
+    .newsletter small {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 50px 0 30px;
+      background: #060609;
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+
+    .footer-col h5 {
+      font-family: 'Bebas Neue', 'Impact', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.6px;
+      margin-bottom: 12px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+
+    .footer-col a {
+      color: rgba(255, 255, 255, 0.78);
+      transition: color 0.2s ease;
+    }
+
+    .footer-col a:hover {
+      color: var(--primary);
+    }
+
+    .copyright {
+      margin-top: 22px;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    /* UTILITÁRIOS */
+    .muted {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 14px;
+    }
+
+    .highlight {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 960px) {
+      .nav {
+        gap: 14px;
+      }
+
+      .nav-links {
+        gap: 16px;
+        font-size: 14px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 50px 0 60px;
+      }
+
+      .hero-carousel {
+        order: -1;
+      }
+
+      .story {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      header {
+        position: fixed;
+        width: 100%;
+        padding: 0 3%;
+      }
+
+      body {
+        padding-top: 86px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: 80vh;
+      }
+
+      .hero h1 {
+        font-size: clamp(40px, 10vw, 72px);
+      }
+
+      .hero-carousel {
+        padding: 14px;
+      }
+
+      .products-row {
+        grid-auto-columns: minmax(180px, 78vw);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="container nav">
+      <a href="#" class="logo">FLAME PULSE</a>
+      <ul class="nav-links">
+        <li><a href="#novidades">Novidades</a></li>
+        <li><a href="#colecoes">Coleções</a></li>
+        <li><a href="#drops">Drops Limitados</a></li>
+        <li><a href="#sale">Sale</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="icon-btn" aria-label="Buscar">🔍</button>
+        <button class="icon-btn" aria-label="Minha conta">👤</button>
+        <button class="icon-btn" aria-label="Carrinho">🛒</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="novidades">
+    <div class="hero-content">
+      <span class="eyebrow">FLAME PULSE — URBAN ENERGY</span>
+      <h1>STREET IS THE NEW RUNWAY.</h1>
+      <p>Streetwear moldado pela cultura de rua, música e skate. Silhuetas icônicas, tecidos premium e drops limitados pensados para quem vive a cidade no volume máximo.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#colecoes">Ver Coleção Atual</a>
+        <a class="btn btn-outline" href="#drops">Drops Limitados</a>
+      </div>
+    </div>
+
+    <aside class="hero-carousel">
+      <div class="carousel-title">Spoiler das coleções</div>
+      <div class="spoiler-list">
+        <div class="spoiler-card">
+          <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=80" alt="Urban Chaos" />
+          <div class="spoiler-content">
+            <span class="tag">Novo</span>
+            <span class="spoiler-title">Urban Chaos</span>
+          </div>
+          <div class="spoiler-overlay">
+            <div>
+              <p>Texturas ásperas, preto dominante e pontos de neon que refletem a cidade sem dormir.</p>
+              <a class="btn-inline" href="#colecoes">Ver coleção →</a>
+            </div>
+          </div>
+        </div>
+        <div class="spoiler-card">
+          <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=80" alt="Night Lights" />
+          <div class="spoiler-content">
+            <span class="tag">Limitado</span>
+            <span class="spoiler-title">Night Lights</span>
+          </div>
+          <div class="spoiler-overlay">
+            <div>
+              <p>Reflexivos, oversize e cortes futuristas para brilhar sob os letreiros da cidade.</p>
+              <a class="btn-inline" href="#colecoes">Ver coleção →</a>
+            </div>
+          </div>
+        </div>
+        <div class="spoiler-card">
+          <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=80" alt="Drop Exclu 001" />
+          <div class="spoiler-content">
+            <span class="tag">Últimas peças</span>
+            <span class="spoiler-title">Drop Exclu 001</span>
+          </div>
+          <div class="spoiler-overlay">
+            <div>
+              <p>Capsule minimalista, algodão premium e detalhes metálicos numerados à mão.</p>
+              <a class="btn-inline" href="#drops">Ver coleção →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <!-- SPOILER CARDS GRID -->
+  <section>
+    <div class="container">
+      <div class="section-title">Spoilers que chegaram cedo</div>
+      <div class="spoiler-grid">
+        <div class="spoiler-card">
+          <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=80" alt="Urban Chaos" />
+          <div class="spoiler-content">
+            <span class="tag">Novo</span>
+            <span class="spoiler-title">Urban Chaos</span>
+          </div>
+          <div class="spoiler-overlay">
+            <div>
+              <p>Variações de preto, cinza e amarelo neon, cortes retos e gola alta.</p>
+              <a class="btn-inline" href="#colecoes">Ver coleção →</a>
+            </div>
+          </div>
+        </div>
+        <div class="spoiler-card">
+          <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=80" alt="Night Lights" />
+          <div class="spoiler-content">
+            <span class="tag">Drop limitado</span>
+            <span class="spoiler-title">Night Lights</span>
+          </div>
+          <div class="spoiler-overlay">
+            <div>
+              <p>Hoodies reflexivos, calças cargo com tiras e sneakers com glow.</p>
+              <a class="btn-inline" href="#drops">Ver coleção →</a>
+            </div>
+          </div>
+        </div>
+        <div class="spoiler-card">
+          <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=80" alt="Drop Exclu 001" />
+          <div class="spoiler-content">
+            <span class="tag">Últimas peças</span>
+            <span class="spoiler-title">Drop Exclu 001</span>
+          </div>
+          <div class="spoiler-overlay">
+            <div>
+              <p>Peças numeradas, etiqueta metálica e silk minimalista.</p>
+              <a class="btn-inline" href="#sale">Ver coleção →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLEÇÕES EM DESTAQUE -->
+  <section id="colecoes">
+    <div class="container">
+      <div class="section-title">Coleções em destaque</div>
+      <div class="collections-grid">
+        <a class="collection-card" href="#">
+          <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=80" alt="Concrete Echo" />
+          <div class="collection-content">
+            <span class="tag">Novo</span>
+            <div class="collection-name">Concrete Echo</div>
+          </div>
+        </a>
+        <a class="collection-card" href="#">
+          <img src="https://images.unsplash.com/photo-1496747611180-206a5c8c42f3?auto=format&fit=crop&w=1200&q=80" alt="Graffiti Pulse" />
+          <div class="collection-content">
+            <span class="tag">Drop Limitado</span>
+            <div class="collection-name">Graffiti Pulse</div>
+          </div>
+        </a>
+        <a class="collection-card" href="#">
+          <img src="https://images.unsplash.com/photo-1519758965401-29e0b9947d3b?auto=format&fit=crop&w=1200&q=80" alt="Skyline Riders" />
+          <div class="collection-content">
+            <span class="tag">Novo</span>
+            <div class="collection-name">Skyline Riders</div>
+          </div>
+        </a>
+        <a class="collection-card" href="#">
+          <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=80" alt="Drop Shadow" />
+          <div class="collection-content">
+            <span class="tag">Limitado</span>
+            <div class="collection-name">Drop Shadow</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUTOS EM DESTAQUE -->
+  <section id="drops">
+    <div class="container">
+      <div class="section-title">Produtos em destaque</div>
+      <div class="products-row">
+        <div class="product-card">
+          <div class="product-image">
+            <span class="badge">Best Seller</span>
+            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80" alt="Hoodie Neon" />
+          </div>
+          <div class="product-body">
+            <div class="product-name">Hoodie Neon Pulse</div>
+            <div class="muted">Algodão premium, capuz duplo</div>
+            <div class="price">R$ 389</div>
+            <button class="add-to-cart" data-added="false">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+            <span class="badge">New</span>
+            <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=80" alt="Jaqueta Tech" />
+          </div>
+          <div class="product-body">
+            <div class="product-name">Jaqueta Tech Reflect</div>
+            <div class="muted">Cordura, zíper selado</div>
+            <div class="price">R$ 549</div>
+            <button class="add-to-cart" data-added="false">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+            <span class="badge">-20%</span>
+            <img src="https://images.unsplash.com/photo-1496747611180-206a5c8c42f3?auto=format&fit=crop&w=800&q=80" alt="Calça cargo" />
+          </div>
+          <div class="product-body">
+            <div class="product-name">Cargo Skyline</div>
+            <div class="muted">Bolsos utilitários, modelagem solta</div>
+            <div class="price">R$ 279</div>
+            <button class="add-to-cart" data-added="false">Adicionar ao carrinho</button>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+            <span class="badge">Drop</span>
+            <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=80" alt="Sneaker Night" />
+          </div>
+          <div class="product-body">
+            <div class="product-name">Sneaker Night Ride</div>
+            <div class="muted">Sola translúcida, detalhes glow</div>
+            <div class="price">R$ 799</div>
+            <button class="add-to-cart" data-added="false">Adicionar ao carrinho</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY DA MARCA -->
+  <section id="contato">
+    <div class="container story">
+      <div class="story-visual">
+        <img src="https://images.unsplash.com/photo-1496747611180-206a5c8c42f3?auto=format&fit=crop&w=1400&q=80" alt="Street" />
+      </div>
+      <div class="story-text">
+        <h3>FLAME PULSE: feito na rua, para a rua.</h3>
+        <p>Nascemos nos picos de skate e becos iluminados por neon. Nossas peças combinam engenharia têxtil com arte urbana para criar uniformes da liberdade. Cada coleção é lançada em drops limitados para manter a chama única.</p>
+        <p class="muted">Construímos comunidade com artistas, DJs e atletas. Se você vive a cidade em movimento, esta é sua casa.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section aria-labelledby="newsletter-title">
+    <div class="container newsletter" id="sale">
+      <h4 id="newsletter-title">Join the Drop List</h4>
+      <p>Entre para a <span class="highlight">Drop List</span> e receba acesso antecipado aos próximos lançamentos e promoções.</p>
+      <form>
+        <input type="email" name="email" placeholder="Seu e-mail" required />
+        <button class="btn btn-primary" type="submit">Entrar</button>
+      </form>
+      <small>Prometemos respeitar seu tempo e privacidade. Sem spam, só calor.</small>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h5>Ajuda</h5>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Trocas e Devoluções</a></li>
+          <li><a href="#">Suporte</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Sobre</h5>
+        <ul>
+          <li><a href="#">Sobre a marca</a></li>
+          <li><a href="#">Contato</a></li>
+          <li><a href="#">Trabalhe conosco</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Social</h5>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">TikTok</a></li>
+          <li><a href="#">YouTube</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Drop List</h5>
+        <p class="muted">Entre para os lançamentos antes de todo mundo.</p>
+        <a class="btn-inline" href="#sale">Inscrever →</a>
+      </div>
+    </div>
+    <div class="copyright">© 2024 FLAME PULSE — Urban Energy. Todos os direitos reservados.</div>
+  </footer>
+
+  <script>
+    // Animações de scroll usando IntersectionObserver
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.15
+    });
+
+    document.querySelectorAll('.collection-card, .product-card').forEach(el => observer.observe(el));
+
+    // Micro interação de adicionar ao carrinho
+    document.querySelectorAll('.add-to-cart').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const added = btn.getAttribute('data-added') === 'true';
+        if (!added) {
+          btn.textContent = 'Adicionado ✔';
+          btn.setAttribute('data-added', 'true');
+          btn.animate([
+            { transform: 'scale(1)', background: 'var(--primary)', color: '#080808' },
+            { transform: 'scale(1.05)', background: 'var(--primary)', color: '#080808' },
+            { transform: 'scale(1)', background: 'var(--primary)', color: '#080808' }
+          ], {
+            duration: 320,
+            easing: 'ease-out'
+          });
+        } else {
+          btn.textContent = 'Adicionar ao carrinho';
+          btn.setAttribute('data-added', 'false');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
